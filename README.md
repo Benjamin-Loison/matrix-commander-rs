@@ -62,7 +62,7 @@ Safe!
   - implement `login` via SSO
   - add --proxy (see Python documentation)
   - add --nossl (see Python documentation)
-  - add --event (see Python documentation and JSON config file in Pythom repo)
+  - add --event (see Python documentation and JSON config file in Python repo)
   - add --download-media (see Python documentation)
   - add other features found in the Python version to the Rust version
   - ...

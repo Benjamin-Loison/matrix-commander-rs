@@ -48,7 +48,7 @@ Safe!
 - Creating a brand new client, sending a message and destroying the client
   all in a single command. This send-and-forget command is:
   `matrix-commander-rs --login password --user-login @john:some.homeserver.org
-  --password secret --device matrix-commander-rs --room-default
+  --homeserver https://some.homeserver.org --password secret --device matrix-commander-rs --room-default
   \!someRoomId:some.homeserver.org --message Hello --logout me`.
 
 # What you can do

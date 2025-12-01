@@ -937,7 +937,7 @@ pub struct Args {
     /// While verification is optional it is highly recommended, and it
     /// is recommended to be done right after (or together with) the
     /// --login action. Verification is always interactive, i.e. it
-    /// required keyboard input.
+    /// requires keyboard input.
     /// Verification questions
     /// will be printed on stdout and the user has to respond
     /// via the keyboard to accept or reject verification.

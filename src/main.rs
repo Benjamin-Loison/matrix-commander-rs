@@ -799,7 +799,7 @@ pub struct Args {
     /// log level of matrix-commander-rs. The second value is assigned to the
     /// lower level modules.
     /// More than two values should not be specified.
-    /// --debug overwrites -log-level.
+    /// --debug overwrites --log-level.
     /// See also '--debug' and '--verbose'.
     /// Alternatively you can use the RUST_LOG environment variable.
     /// An example use of RUST_LOG is to use neither --log-level nor --debug,
@@ -908,7 +908,7 @@ pub struct Args {
     /// By default, no
     /// verification is performed.
     /// Verification is currently offered via Manual-Device, Manual-User, Emoji and Emoji-Req.
-    /// Do verification in this order: 1) bootstrap first with -bootstrap,
+    /// Do verification in this order: 1) bootstrap first with --bootstrap,
     /// 2) perform both manual verifications, and 3) perform emoji verification.
     /// --verify emoji has been tested against Element in Firefox browser and against
     /// Element app on Android phone. Both has been working successfully in Sept 2024.
@@ -926,7 +926,7 @@ pub struct Args {
     /// manual-device can only verify its own devices, not other users' devices.
     /// manual-user can trust other users. So, with manual-user also use the --user option
     /// to specify one or multiple users. With manual-user first trust yourself, by
-    /// setting --user to yourself, or omitting -user in which case it will default to itself.
+    /// setting --user to yourself, or omitting --user in which case it will default to itself.
     /// One should first do 'manual-device' and 'manual-user' verification and
     /// then 'emoji' or 'emoji-req' verification.
     /// Both 'emoji' as well as 'emoji-req' perform emoji verification.

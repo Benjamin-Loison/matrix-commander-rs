@@ -548,7 +548,7 @@ enum Listen {
     Forever,
     /// Tail: Indicates to get the last N messages from the specified room(s) and then continue
     Tail,
-    /// All: Indicates to get *all* the messages from from the specified room(s) and then continue
+    /// All: Indicates to get *all* the messages from the specified room(s) and then continue
     All,
 }
 
@@ -605,11 +605,11 @@ enum LogLevel {
     Error,
     /// Warn: Indicates to print warnings and errors
     Warn,
-    /// Info: Indicates to to print info, warn and errors
+    /// Info: Indicates to print info, warn and errors
     Info,
-    /// Debug: Indicates to to print debug and the rest
+    /// Debug: Indicates to print debug and the rest
     Debug,
-    /// Trace: Indicates to to print everything
+    /// Trace: Indicates to print everything
     Trace,
 }
 
@@ -659,9 +659,9 @@ pub enum Output {
     Text,
     /// Json: Indicates to print output in Json format
     Json,
-    /// Json Max: Indicates to to print the maximum amount of output in Json format
+    /// Json Max: Indicates to print the maximum amount of output in Json format
     JsonMax,
-    /// Json Spec: Indicates to to print output in Json format, but only data that is according to Matrix Specifications
+    /// Json Spec: Indicates to print output in Json format, but only data that is according to Matrix Specifications
     JsonSpec,
 }
 

@@ -79,9 +79,9 @@ Options:
           - none:  None: not set, default
           - error: Error: Indicates to print only errors
           - warn:  Warn: Indicates to print warnings and errors
-          - info:  Info: Indicates to to print info, warn and errors
-          - debug: Debug: Indicates to to print debug and the rest
-          - trace: Trace: Indicates to to print everything
+          - info:  Info: Indicates to print info, warn and errors
+          - debug: Debug: Indicates to print debug and the rest
+          - trace: Trace: Indicates to print everything
 
       --verbose...
           Set the verbosity level. Details:: If not used, then verbosity will
@@ -190,7 +190,7 @@ Options:
           without a pipe. While verification is optional it is highly
           recommended, and it is recommended to be done right after (or
           together with) the --login action. Verification is always
-          interactive, i.e. it required keyboard input. Verification questions
+          interactive, i.e. it requires keyboard input. Verification questions
           will be printed on stdout and the user has to respond via the
           keyboard to accept or reject verification. Once verification is
           complete, the program may be run as a service. Different Matrix
@@ -462,7 +462,7 @@ Options:
             the event loop
           - tail:    Tail: Indicates to get the last N messages from the
             specified room(s) and then continue
-          - all:     All: Indicates to get *all* the messages from from the
+          - all:     All: Indicates to get *all* the messages from the
             specified room(s) and then continue
 
       --tail <TAIL>
@@ -519,10 +519,10 @@ Options:
           Possible values:
           - text:      Text: Indicates to print human readable text, default
           - json:      Json: Indicates to print output in Json format
-          - json-max:  Json Max: Indicates to to print the maximum amount of
+          - json-max:  Json Max: Indicates to print the maximum amount of
             output in Json format
-          - json-spec: Json Spec: Indicates to to print output in Json format,
-            but only data that is according to Matrix Specifications
+          - json-spec: Json Spec: Indicates to print output in Json format, but
+            only data that is according to Matrix Specifications
 
       --file-name [<FILE_NAME>...]
           Specify one or multiple file names for some actions. Details:: This

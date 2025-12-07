@@ -464,7 +464,11 @@ pub(crate) async fn login<'a>(
         client.access_token().unwrap(),
         client.session_meta().unwrap().device_id.clone(),
         room_default.to_string(),
-        {client.refresh_access_token().await.unwrap(); client.access_token()},
+        if let Some(refresh_token) = client.session().unwrap().get_refresh_token() {
+            Some(refresh_token.to_string())
+        } else {
+            None
+        }
     );
     credentials.save(&ap.credentials)?;
     // sync is needed even when --login is used,

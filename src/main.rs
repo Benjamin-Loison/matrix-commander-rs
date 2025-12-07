@@ -82,7 +82,7 @@ use crate::mclient::{
     convert_to_full_room_ids, convert_to_full_user_ids, delete_devices_pre, devices, file,
     get_avatar, get_avatar_url, get_display_name, get_masterkey, get_profile, get_room_info,
     invited_rooms, joined_members, joined_rooms, left_rooms, login, logout, logout_local,
-    media_delete, /*media_download,*/ media_mxc_to_http, /*media_upload,*/ message,
+    media_delete, media_download, media_mxc_to_http, media_upload, message,
     replace_star_with_rooms, restore_credentials, restore_login, room_ban, room_create,
     room_enable_encryption, room_forget, room_get_state, room_get_visibility, room_invite,
     room_join, room_kick, room_leave, room_resolve_alias, room_unban, rooms, set_avatar,
@@ -3036,16 +3036,16 @@ pub(crate) async fn cli_file(client: &Client, ap: &Args) -> Result<(), Error> {
 }
 
 /// Handle the --media-upload CLI argument
-/*pub(crate) async fn cli_media_upload(client: &Client, ap: &Args) -> Result<(), Error> {
+pub(crate) async fn cli_media_upload(client: &Client, ap: &Args) -> Result<(), Error> {
     info!("Media upload chosen.");
     media_upload(client, &ap.media_upload, &ap.mime, ap.output).await // returning
-}*/
+}
 
 /// Handle the --media-download once CLI argument
-/*pub(crate) async fn cli_media_download(client: &Client, ap: &Args) -> Result<(), Error> {
+pub(crate) async fn cli_media_download(client: &Client, ap: &Args) -> Result<(), Error> {
     info!("Media download chosen.");
     media_download(client, &ap.media_download, &ap.file_name, ap.output).await // returning
-}*/
+}
 
 /// Handle the --media-delete once CLI argument
 pub(crate) async fn cli_media_delete(client: &Client, ap: &Args) -> Result<(), Error> {
@@ -4001,7 +4001,7 @@ async fn main() -> Result<(), Error> {
                 };
             };
 
-            /*if !ap.media_download.is_empty() {
+            if !ap.media_download.is_empty() {
                 match crate::cli_media_download(&client, &ap).await {
                     Ok(ref _n) => debug!("crate::media_download successful"),
                     Err(e) => {
@@ -4010,7 +4010,7 @@ async fn main() -> Result<(), Error> {
                         result = Err(e);
                     }
                 };
-            };*/
+            };
 
             // set actions
 
@@ -4187,7 +4187,7 @@ async fn main() -> Result<(), Error> {
                 };
             };
 
-            /*if !ap.media_upload.is_empty() {
+            if !ap.media_upload.is_empty() {
                 match crate::cli_media_upload(&client, &ap).await {
                     Ok(ref _n) => debug!("crate::media_upload successful"),
                     Err(e) => {
@@ -4196,7 +4196,7 @@ async fn main() -> Result<(), Error> {
                         result = Err(e);
                     }
                 };
-            };*/
+            };
 
             if !ap.media_delete.is_empty() {
                 match crate::cli_media_delete(&client, &ap).await {

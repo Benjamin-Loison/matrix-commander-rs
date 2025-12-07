@@ -680,19 +680,11 @@ pub(crate) async fn listen_tail(
             let anytimelineevent = &chunk[chunk.len() - 1 - index]; // reverse ordering, getting older msg first
                                                                     // Todo : dump the JSON serialized string via Json API
 
-            //let anytimelineeventKind = anytimelineevent.kind;
-            let rawevent = if let /*Some(*/TimelineEventKind::Decrypted(decrypted)/*)*/ = &anytimelineevent.kind {
-                /*let rawevent =*/ &decrypted.event/*.deserialize().unwrap()*///;
+            let rawevent = if let TimelineEventKind::Decrypted(decrypted) = &anytimelineevent.kind {
+                &decrypted.event
             } else {
-                panic!()//;
+                panic!()
             };
-            /*let rawevent: AnyTimelineEvent = match anytimelineevent.kind {//.event.deserialize().unwrap();
-                TimelineEventKind::Decrypted(decrypted) => decrypted.event.deserialize().unwrap(),
-                TimelineEventKind::UnableToDecrypt { event, .. } => AnyTimelineEvent::from(event.deserialize().unwrap()),
-                //_ => todo!(),
-                //TimelineEventKind::PlainText(plainText) => plainText.event,
-            };*/
-            //todo!();
             // print_type_of(&rawevent); // ruma_common::events::enums::AnyTimelineEvent
             debug!("rawevent = value is {:?}\n", rawevent);
             // rawevent = Ok(MessageLike(RoomMessage(Original(OriginalMessageLikeEvent { content: RoomMessageEventContent {

@@ -15,7 +15,7 @@ use std::borrow::Cow;
 use std::io::{self, Read, Write};
 // use std::env;
 use std::fs;
-//use std::fs::File;
+use std::fs::File;
 // use std::ops::Deref;
 // use std::path::Path;
 use std::io::{stdin, IsTerminal};
@@ -31,9 +31,9 @@ use matrix_sdk::{
     attachment::AttachmentConfig,
     config::{RequestConfig, StoreConfig, SyncSettings},
     // encryption::CryptoStoreError,
-    //deserialized_responses::{DisplayName, AvatarUrl},//RawSyncOrStrippedState,
+    // deserialized_responses::RawSyncOrStrippedState,
     authentication::{matrix::MatrixSession, SessionTokens},
-    media::{MediaFormat/*, MediaRequest*/},
+    media::{MediaFormat, MediaRequestParameters},
     room,
     room::{Room, RoomMember},
     ruma::{
@@ -64,7 +64,7 @@ use matrix_sdk::{
         events::room::name::RoomNameEventContent,
         events::room::power_levels::{RoomPowerLevelsEventContent/*, UserPowerLevel*/},
         events::room::topic::RoomTopicEventContent,
-        //events::room::MediaSource,
+        events::room::MediaSource,
         events::AnyInitialStateEvent,
         events::EmptyStateKey,
         events::InitialStateEvent,
@@ -1298,9 +1298,8 @@ pub(crate) async fn room_create(
             let content =
                 RoomEncryptionEventContent::new(EventEncryptionAlgorithm::MegolmV1AesSha2);
             let initstateev: InitialStateEvent<RoomEncryptionEventContent> = InitialStateEvent::new(
-                /*state_key:*/ EmptyStateKey,
+                EmptyStateKey,
                 content,
-                //..
             );
             let rawinitstateev = Raw::new(&initstateev)?;
             // let anyinitstateev: AnyInitialStateEvent =
@@ -2644,7 +2643,7 @@ pub(crate) async fn file(
 
 /// Upload one or more files to the server.
 /// Allows various Mime formats.
-/*pub(crate) async fn media_upload(
+pub(crate) async fn media_upload(
     client: &Client,
     filenames: &[PathBuf],
     mime_strings: &[String],
@@ -2719,7 +2718,7 @@ pub(crate) async fn file(
             );
             err_count += 1;
         } else {
-            match client.media().upload(&mime, data).await {
+            match client.media().upload(&mime, data, None).await {
                 Ok(response) => {
                     debug!("upload successful {:?}", response);
                     print_json(
@@ -2746,11 +2745,11 @@ pub(crate) async fn file(
     } else {
         Err(Error::MediaUploadFailed)
     }
-}*/
+}
 
 /// Download one or more files from the server based on XMC URI.
 /// Allows various Mime formats.
-/*pub(crate) async fn media_download(
+pub(crate) async fn media_download(
     client: &Client,
     mxc_uris: &[OwnedMxcUri],
     filenames: &[PathBuf],
@@ -2784,7 +2783,7 @@ pub(crate) async fn file(
                 10,
             ));
         }
-        let request = MediaRequest {
+        let request = MediaRequestParameters {
             source: MediaSource::Plain(mxc_uri.clone()),
             format: MediaFormat::File,
         };
@@ -2864,7 +2863,7 @@ pub(crate) async fn file(
     } else {
         Err(Error::MediaDownloadFailed)
     }
-}*/
+}
 
 // Todo: remove media content thumbnails
 

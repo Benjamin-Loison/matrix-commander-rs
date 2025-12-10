@@ -153,7 +153,7 @@ fn handle_originalsyncmessagelikeevent(
                     body, source, info, ..
                 } = audiomessageeventcontent;
                 println!(
-                    "Message: type Image: body {:?}, room {:?}, sender {:?}, event id {:?}, source {:?}, info {:?}",
+                    "Message: type Audio: body {:?}, room {:?}, sender {:?}, event id {:?}, source {:?}, info {:?}",
                     body, room_id, ev.sender, ev.event_id, source, info,
                 );
             }
@@ -163,7 +163,7 @@ fn handle_originalsyncmessagelikeevent(
                     body, source, info, ..
                 } = videomessageeventcontent;
                 println!(
-                    "Message: type Image: body {:?}, room {:?}, sender {:?}, event id {:?}, source {:?}, info {:?}",
+                    "Message: type Video: body {:?}, room {:?}, sender {:?}, event id {:?}, source {:?}, info {:?}",
                     body, room_id, ev.sender, ev.event_id, source, info,
                 );
             }

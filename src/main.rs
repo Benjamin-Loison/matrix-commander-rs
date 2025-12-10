@@ -114,8 +114,6 @@ const PKG_REPOSITORY_O: Option<&str> = option_env!("CARGO_PKG_REPOSITORY");
 const PKG_REPOSITORY: &str = "https://github.com/8go/matrix-commander-rs/";
 /// default name for login credentials JSON file
 const CREDENTIALS_FILE_DEFAULT: &str = "credentials.json";
-/// depreciated default directory to be used for persistent storage, remove in v0.5 todo
-const DEPRECIATED_STORE_DIR_DEFAULT: &str = "sledstore/";
 /// default directory to be used by end-to-end encrypted protocol for persistent storage
 const STORE_DIR_DEFAULT: &str = "store/";
 /// default timeouts for waiting for the Matrix server, in seconds
@@ -2297,18 +2295,6 @@ fn credentials_exist(ap: &Args) -> bool {
 
 /// Gets the *default* path (terminating in a directory) of the store directory
 /// The default path might not be the actual path as it can be overwritten with command line
-/// options. To be removed in v0.5. : todo
-fn get_store_depreciated_default_path() -> PathBuf {
-    let dir = ProjectDirs::from_path(PathBuf::from(get_prog_without_ext())).unwrap();
-    // fs::create_dir_all(dir.data_dir());
-    let dp = dir.data_dir().join(DEPRECIATED_STORE_DIR_DEFAULT);
-    debug!("Default project directory is {:?}.", dir.data_dir());
-    debug!("Ddepreciated default store directory is {}.", dp.display());
-    dp
-}
-
-/// Gets the *default* path (terminating in a directory) of the store directory
-/// The default path might not be the actual path as it can be overwritten with command line
 /// options.
 fn get_store_default_path() -> PathBuf {
     let dir = ProjectDirs::from_path(PathBuf::from(get_prog_without_ext())).unwrap();
@@ -3790,25 +3776,6 @@ async fn main() -> Result<(), Error> {
                 }
                 ap.listen = Listen::Tail
             }
-
-            // remove in version 0.5 : todo
-            warn!(
-                "Versions 0.4+ are incompatible with previous versions v0.3-. \
-            The default location of the store has changed. \
-            The directory name of the default store used to be 'sledstore'. \
-            Now it is just 'store'. The program attempts to rename \
-            the store's directory name automatically. E.g. on Linux it tries \
-            to automatically rename \
-            '~/.local/share/matrix-commander-rs/sledstore/' to \
-            '~/.local/share/matrix-commander-rs/store/'. \
-            If you have used the default store name in the past, \
-            and automatical renaming is failing for you, then rename the store's \
-            directory name from \
-            'sledstore' to 'store' manually. Also, some JSON and \
-            text output is different than in previous version. If you are parsing \
-            the output you should do careful testing to adapt to the changed \
-            output."
-            );
 
             // top-priority actions
 

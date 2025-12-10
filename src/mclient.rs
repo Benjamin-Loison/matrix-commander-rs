@@ -91,7 +91,7 @@ use matrix_sdk::{
 
 // from main.rs
 use crate::{
-    credentials_exist, get_password, get_store_default_path, get_store_depreciated_default_path,
+    credentials_exist, get_password, get_store_default_path,
     Args, Credentials, Error, Listen, Output, Sync,
 };
 
@@ -487,28 +487,11 @@ pub(crate) async fn login<'a>(
 async fn create_client(homeserver: &Url, ap: &Args) -> Result<Client, Error> {
     // The location to save files to
     let sqlitestorehome = &ap.store;
-    // remove in version 0.5 : todo
-    // Incompatibility between v0.4 and v0.3-
     debug!(
         "Compare store names: {:?} {:?}",
         ap.store,
         get_store_default_path()
     );
-    if ap.store == get_store_default_path()
-        && !get_store_default_path().exists()
-        && get_store_depreciated_default_path().exists()
-    {
-        warn!(
-            "In order to correct incompatibility in version v0.4 the \
-            directory {:?} will be renamed to {:?}.",
-            get_store_depreciated_default_path(),
-            get_store_default_path()
-        );
-        fs::rename(
-            get_store_depreciated_default_path(),
-            get_store_default_path(),
-        )?;
-    }
     info!("Using sqlite store {:?}", &sqlitestorehome);
     // let builder = if let Some(proxy) = cli.proxy { builder.proxy(proxy) } else { builder };
     let builder = Client::builder()

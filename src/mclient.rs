@@ -1435,10 +1435,6 @@ pub(crate) async fn room_leave(
                     info!("Left room {:?} successfully.", id);
                     // Todo: does this work? Does not seem to work.
                     jroom.clone_info().mark_as_left();
-                    // Todo: starting v0.7 this sync() will no longer be necessary
-                    client
-                        .sync_once(SyncSettings::new().timeout(Duration::new(10, 0)))
-                        .await?; //todo: remove this it did not fix the problem.
                 }
                 Err(ref e) => {
                     error!("Error: leave() returned error {:?}.", e);

@@ -3708,7 +3708,7 @@ async fn main() -> Result<(), Error> {
             // pre-processing of CLI arguments, filtering, replacing shortcuts, etc.
             let default_room =
                 get_room_default_from_credentials(&client, ap.creds.as_ref().unwrap()).await;
-            // Todo: port number is not handled in hostrname, could be matrix.server.org:90
+            // Todo: port number is not handled in hostname, could be matrix.server.org:90
             let creds = ap.creds.clone().unwrap();
             let hostname = creds.homeserver.host_str().unwrap(); // matrix.server.org
             set_rooms(&mut ap, &default_room); // if no rooms in --room, set rooms to default room from credentials file

@@ -3406,7 +3406,7 @@ async fn main() -> Result<(), Error> {
                 .with_writer(io::stderr)
                 .with_env_filter(EnvFilter::from_default_env()) // support the standard RUST_LOG env variable
                 .init();
-            debug!("Neither --debug nor --log-level was used. Using environment vaiable RUST_LOG.");
+            debug!("Neither --debug nor --log-level was used. Using environment variable RUST_LOG.");
         }
         Some(llvec) => {
             if llvec.len() == 1 {
@@ -3425,7 +3425,7 @@ async fn main() -> Result<(), Error> {
                     .init();
                 debug!(
                     "The --debug or --log-level was used once or with one value. \
-                    Specifying logging equivalent to RUST_LOG seting of '{}'.",
+                    Specifying logging equivalent to RUST_LOG setting of '{}'.",
                     rlogstr
                 );
             } else {
@@ -3447,7 +3447,7 @@ async fn main() -> Result<(), Error> {
                     .init();
                 debug!(
                     "The --debug or --log-level was used twice or with two values. \
-                    Specifying logging equivalent to RUST_LOG seting of '{}'.",
+                    Specifying logging equivalent to RUST_LOG setting of '{}'.",
                     rlogstr
                 );
             }
